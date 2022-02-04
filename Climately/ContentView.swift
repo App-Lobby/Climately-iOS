@@ -30,23 +30,31 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
-
-struct CurrentAPIResponse: Decodable {
-    var current: Current
+struct APIResponse: Decodable {
+    public var current: Current
+    public var hourly: [Hourly]
+    public var daily: [Daily]
     
-    init(current: Current) {
+    init(
+        current: Current,
+        hourly: [Hourly],
+        daily: [Daily]
+    ) {
         self.current = current
+        self.hourly = hourly
+        self.daily = daily
     }
-    
+}
+
+extension APIResponse {
     struct Current: Decodable {
-        var temp: Double
-        var pressure: Int
-        var humidity: Int
-        var wind_speed: Double
-        var sunrise: Date
-        var sunset: Date
-        var weather: [Weather]
+        public var temp: Double
+        public var pressure: Int
+        public var humidity: Int
+        public var wind_speed: Double
+        public var sunrise: Date
+        public var sunset: Date
+        public var weather: [Weather]
         
         init(
             temp: Double,
@@ -55,7 +63,7 @@ struct CurrentAPIResponse: Decodable {
             wind_speed: Double,
             sunrise: Date,
             sunset: Date,
-            weather: [CurrentAPIResponse.Current.Weather]
+            weather: [APIResponse.Current.Weather]
         ) {
             self.temp = temp
             self.pressure = pressure
@@ -67,7 +75,67 @@ struct CurrentAPIResponse: Decodable {
         }
         
         struct Weather: Decodable {
-            var id: Int
+            public var id: Int
+            
+            init(id: Int) {
+                self.id = id
+            }
+        }
+    }
+}
+
+extension APIResponse {
+    struct Hourly: Decodable {
+        public var dt: Date
+        public var temp: Double
+        public var weather: [Weather]
+        
+        init(
+            dt: Date,
+            temp: Double,
+            weather: [Weather]
+        ) {
+            self.dt = dt
+            self.temp = temp
+            self.weather = weather
+        }
+        
+        struct Weather: Decodable {
+            public var id: Int
+            
+            init(id: Int) {
+                self.id = id
+            }
+        }
+    }
+}
+
+extension APIResponse {
+    struct Daily: Decodable {
+        public var dt: Date
+        public var temp: Temp
+        public var weather: [Weather]
+        
+        init(
+            dt: Date,
+            temp: Temp,
+            weather: [Weather]
+        ) {
+            self.dt = dt
+            self.temp = temp
+            self.weather = weather
+        }
+            
+        struct Temp: Decodable {
+            public var day: Double
+            
+            init(day: Double) {
+                self.day = day
+            }
+        }
+        
+        struct Weather: Decodable {
+            public var id: Int
             
             init(id: Int) {
                 self.id = id
@@ -90,7 +158,7 @@ struct ServiceManager {
         key: String,
         lat: Double,
         lon: Double,
-        completionHandler: @escaping (Result<CurrentAPIResponse, NetworkError>) -> ()
+        completionHandler: @escaping (Result<APIResponse, NetworkError>) -> ()
     ) {
         
         let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&appid=\(key)")
@@ -113,7 +181,7 @@ struct ServiceManager {
             
             do {
                 let decoder = JSONDecoder()
-                let decodedData = try decoder.decode(CurrentAPIResponse.self, from: data)
+                let decodedData = try decoder.decode(APIResponse.self, from: data)
                 completionHandler(.success(decodedData))
             } catch {
                 completionHandler(.failure(NetworkError.dataNotFound))
