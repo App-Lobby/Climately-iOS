@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5493ECD527AD4D1F00B825CA /* ClimatelyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */; };
-		5493ECD727AD4D1F00B825CA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECD627AD4D1F00B825CA /* ContentView.swift */; };
+		5493ECD727AD4D1F00B825CA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECD627AD4D1F00B825CA /* HomeView.swift */; };
 		5493ECD927AD4D2400B825CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5493ECD827AD4D2400B825CA /* Assets.xcassets */; };
 		5493ECDC27AD4D2400B825CA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5493ECDB27AD4D2400B825CA /* Preview Assets.xcassets */; };
 		5493ECE427AD63A300B825CA /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECE327AD63A300B825CA /* APIResponse.swift */; };
@@ -22,7 +22,7 @@
 /* Begin PBXFileReference section */
 		5493ECD127AD4D1F00B825CA /* Climately.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Climately.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimatelyApp.swift; sourceTree = "<group>"; };
-		5493ECD627AD4D1F00B825CA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5493ECD627AD4D1F00B825CA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5493ECD827AD4D2400B825CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5493ECDB27AD4D2400B825CA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5493ECE327AD63A300B825CA /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		5493ECF327AD655800B825CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5493ECD627AD4D1F00B825CA /* ContentView.swift */,
+				5493ECD627AD4D1F00B825CA /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 			files = (
 				5493ECF027AD649400B825CA /* NetworkingEnums.swift in Sources */,
 				5493ECE827AD63EA00B825CA /* APIResponse+Hourly.swift in Sources */,
-				5493ECD727AD4D1F00B825CA /* ContentView.swift in Sources */,
+				5493ECD727AD4D1F00B825CA /* HomeView.swift in Sources */,
 				5493ECD527AD4D1F00B825CA /* ClimatelyApp.swift in Sources */,
 				5493ECE427AD63A300B825CA /* APIResponse.swift in Sources */,
 				5493ECE627AD63C600B825CA /* APIResponse+Current.swift in Sources */,
