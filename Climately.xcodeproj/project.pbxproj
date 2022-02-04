@@ -11,6 +11,12 @@
 		5493ECD727AD4D1F00B825CA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECD627AD4D1F00B825CA /* ContentView.swift */; };
 		5493ECD927AD4D2400B825CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5493ECD827AD4D2400B825CA /* Assets.xcassets */; };
 		5493ECDC27AD4D2400B825CA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5493ECDB27AD4D2400B825CA /* Preview Assets.xcassets */; };
+		5493ECE427AD63A300B825CA /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECE327AD63A300B825CA /* APIResponse.swift */; };
+		5493ECE627AD63C600B825CA /* APIResponse+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECE527AD63C600B825CA /* APIResponse+Current.swift */; };
+		5493ECE827AD63EA00B825CA /* APIResponse+Hourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECE727AD63EA00B825CA /* APIResponse+Hourly.swift */; };
+		5493ECEA27AD640900B825CA /* APIResponse+Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECE927AD640900B825CA /* APIResponse+Daily.swift */; };
+		5493ECED27AD644700B825CA /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECEC27AD644700B825CA /* ServiceManager.swift */; };
+		5493ECF027AD649400B825CA /* NetworkingEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECEF27AD649400B825CA /* NetworkingEnums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		5493ECD627AD4D1F00B825CA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5493ECD827AD4D2400B825CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5493ECDB27AD4D2400B825CA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5493ECE327AD63A300B825CA /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		5493ECE527AD63C600B825CA /* APIResponse+Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIResponse+Current.swift"; sourceTree = "<group>"; };
+		5493ECE727AD63EA00B825CA /* APIResponse+Hourly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIResponse+Hourly.swift"; sourceTree = "<group>"; };
+		5493ECE927AD640900B825CA /* APIResponse+Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIResponse+Daily.swift"; sourceTree = "<group>"; };
+		5493ECEC27AD644700B825CA /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		5493ECEF27AD649400B825CA /* NetworkingEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */,
+				5493ECEE27AD646A00B825CA /* Enums */,
+				5493ECEB27AD643700B825CA /* Serices */,
+				5493ECE227AD638E00B825CA /* Models */,
 				5493ECD627AD4D1F00B825CA /* ContentView.swift */,
 				5493ECD827AD4D2400B825CA /* Assets.xcassets */,
 				5493ECDA27AD4D2400B825CA /* Preview Content */,
@@ -65,6 +80,33 @@
 				5493ECDB27AD4D2400B825CA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5493ECE227AD638E00B825CA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5493ECE327AD63A300B825CA /* APIResponse.swift */,
+				5493ECE527AD63C600B825CA /* APIResponse+Current.swift */,
+				5493ECE727AD63EA00B825CA /* APIResponse+Hourly.swift */,
+				5493ECE927AD640900B825CA /* APIResponse+Daily.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5493ECEB27AD643700B825CA /* Serices */ = {
+			isa = PBXGroup;
+			children = (
+				5493ECEC27AD644700B825CA /* ServiceManager.swift */,
+			);
+			path = Serices;
+			sourceTree = "<group>";
+		};
+		5493ECEE27AD646A00B825CA /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				5493ECEF27AD649400B825CA /* NetworkingEnums.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5493ECF027AD649400B825CA /* NetworkingEnums.swift in Sources */,
+				5493ECE827AD63EA00B825CA /* APIResponse+Hourly.swift in Sources */,
 				5493ECD727AD4D1F00B825CA /* ContentView.swift in Sources */,
 				5493ECD527AD4D1F00B825CA /* ClimatelyApp.swift in Sources */,
+				5493ECE427AD63A300B825CA /* APIResponse.swift in Sources */,
+				5493ECE627AD63C600B825CA /* APIResponse+Current.swift in Sources */,
+				5493ECED27AD644700B825CA /* ServiceManager.swift in Sources */,
+				5493ECEA27AD640900B825CA /* APIResponse+Daily.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
