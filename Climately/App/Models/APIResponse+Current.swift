@@ -18,13 +18,13 @@ extension APIResponse {
         public var weather: [Weather]
         
         init(
-            temp: Double,
-            pressure: Int,
-            humidity: Int,
-            wind_speed: Double,
-            sunrise: Date,
-            sunset: Date,
-            weather: [APIResponse.Current.Weather]
+            temp: Double = 0,
+            pressure: Int = 0,
+            humidity: Int = 0,
+            wind_speed: Double = 0,
+            sunrise: Date = Date(),
+            sunset: Date = Date(),
+            weather: [APIResponse.Current.Weather] = []
         ) {
             self.temp = temp
             self.pressure = pressure

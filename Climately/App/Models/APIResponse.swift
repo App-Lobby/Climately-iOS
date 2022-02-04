@@ -13,9 +13,9 @@ public struct APIResponse: Decodable {
     public var daily: [Daily]
     
     init(
-        current: Current,
-        hourly: [Hourly],
-        daily: [Daily]
+        current: Current = .init(),
+        hourly: [Hourly] = [],
+        daily: [Daily] = []
     ) {
         self.current = current
         self.hourly = hourly
