@@ -63,13 +63,8 @@
 		5493ECD327AD4D1F00B825CA /* Climately */ = {
 			isa = PBXGroup;
 			children = (
-				5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */,
-				5493ECEE27AD646A00B825CA /* Enums */,
-				5493ECEB27AD643700B825CA /* Serices */,
-				5493ECE227AD638E00B825CA /* Models */,
-				5493ECD627AD4D1F00B825CA /* ContentView.swift */,
-				5493ECD827AD4D2400B825CA /* Assets.xcassets */,
-				5493ECDA27AD4D2400B825CA /* Preview Content */,
+				5493ECF127AD652800B825CA /* App */,
+				5493ECF227AD653100B825CA /* SupportingFiles */,
 			);
 			path = Climately;
 			sourceTree = "<group>";
@@ -107,6 +102,35 @@
 				5493ECEF27AD649400B825CA /* NetworkingEnums.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		5493ECF127AD652800B825CA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */,
+				5493ECEE27AD646A00B825CA /* Enums */,
+				5493ECEB27AD643700B825CA /* Serices */,
+				5493ECE227AD638E00B825CA /* Models */,
+				5493ECF327AD655800B825CA /* Views */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5493ECF227AD653100B825CA /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5493ECD827AD4D2400B825CA /* Assets.xcassets */,
+				5493ECDA27AD4D2400B825CA /* Preview Content */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		5493ECF327AD655800B825CA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5493ECD627AD4D1F00B825CA /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +340,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Climately/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Climately/SupportingFiles/Preview Content\"";
 				DEVELOPMENT_TEAM = 2PZA59W334;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -345,7 +369,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Climately/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Climately/SupportingFiles/Preview Content\"";
 				DEVELOPMENT_TEAM = 2PZA59W334;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
