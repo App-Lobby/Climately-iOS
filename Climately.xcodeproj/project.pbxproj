@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5424513427AE8A4A00B0D729 /* Extension+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5424513327AE8A4A00B0D729 /* Extension+DateFormatter.swift */; };
+		5424513727AE8BC000B0D729 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5424513627AE8BC000B0D729 /* WeatherViewModel.swift */; };
+		5424513A27AE8C0A00B0D729 /* ViewEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5424513927AE8C0A00B0D729 /* ViewEnums.swift */; };
+		5424513C27AE8D2C00B0D729 /* HourlyForcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5424513B27AE8D2C00B0D729 /* HourlyForcastView.swift */; };
 		5493ECD527AD4D1F00B825CA /* ClimatelyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */; };
 		5493ECD727AD4D1F00B825CA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECD627AD4D1F00B825CA /* HomeView.swift */; };
 		5493ECD927AD4D2400B825CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5493ECD827AD4D2400B825CA /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		5424513327AE8A4A00B0D729 /* Extension+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+DateFormatter.swift"; sourceTree = "<group>"; };
+		5424513627AE8BC000B0D729 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		5424513927AE8C0A00B0D729 /* ViewEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEnums.swift; sourceTree = "<group>"; };
+		5424513B27AE8D2C00B0D729 /* HourlyForcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForcastView.swift; sourceTree = "<group>"; };
 		5493ECD127AD4D1F00B825CA /* Climately.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Climately.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimatelyApp.swift; sourceTree = "<group>"; };
 		5493ECD627AD4D1F00B825CA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -52,6 +58,14 @@
 				5424513327AE8A4A00B0D729 /* Extension+DateFormatter.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5424513527AE8BB000B0D729 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5424513627AE8BC000B0D729 /* WeatherViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		5493ECC827AD4D1E00B825CA = {
@@ -110,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				5493ECEF27AD649400B825CA /* NetworkingEnums.swift */,
+				5424513927AE8C0A00B0D729 /* ViewEnums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -118,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */,
+				5424513527AE8BB000B0D729 /* ViewModels */,
 				5493ECE227AD638E00B825CA /* Models */,
 				5493ECF327AD655800B825CA /* Views */,
 				5493ECEB27AD643700B825CA /* Serices */,
@@ -140,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				5493ECD627AD4D1F00B825CA /* HomeView.swift */,
+				5424513B27AE8D2C00B0D729 /* HourlyForcastView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,10 +236,13 @@
 				5493ECD727AD4D1F00B825CA /* HomeView.swift in Sources */,
 				5493ECD527AD4D1F00B825CA /* ClimatelyApp.swift in Sources */,
 				5493ECE427AD63A300B825CA /* APIResponse.swift in Sources */,
+				5424513727AE8BC000B0D729 /* WeatherViewModel.swift in Sources */,
+				5424513C27AE8D2C00B0D729 /* HourlyForcastView.swift in Sources */,
 				5493ECE627AD63C600B825CA /* APIResponse+Current.swift in Sources */,
 				5424513427AE8A4A00B0D729 /* Extension+DateFormatter.swift in Sources */,
 				5493ECED27AD644700B825CA /* ServiceManager.swift in Sources */,
 				5493ECEA27AD640900B825CA /* APIResponse+Daily.swift in Sources */,
+				5424513A27AE8C0A00B0D729 /* ViewEnums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

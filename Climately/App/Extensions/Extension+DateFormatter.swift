@@ -13,4 +13,13 @@ extension DateFormatter {
         formatter.dateFormat = "h:mm a"
         return formatter
     }
+    
+    static var todayTommorowDate: DateFormatter {
+        let formtter = DateFormatter()
+        formtter.timeStyle = .none
+        formtter.dateStyle = .medium
+        formtter.locale = Locale(identifier: "en_GB")
+        formtter.doesRelativeDateFormatting = true
+        return formtter
+    }
 }
