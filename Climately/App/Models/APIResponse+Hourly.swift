@@ -9,14 +9,14 @@ import SwiftUI
 
 extension APIResponse {
     public struct Hourly: Decodable {
-        public var dt: Date
-        public var temp: Double
-        public var weather: [Weather]
+        public var dt: Date?
+        public var temp: Double?
+        public var weather: [Weather]?
         
-        init(
-            dt: Date,
-            temp: Double,
-            weather: [Weather]
+        internal init(
+            dt: Date?,
+            temp: Double?,
+            weather: [Weather]?
         ) {
             self.dt = dt
             self.temp = temp
@@ -24,9 +24,9 @@ extension APIResponse {
         }
         
         public struct Weather: Decodable {
-            public var id: Int
+            public var id: Int?
             
-            init(id: Int) {
+            internal init(id: Int? = nil) {
                 self.id = id
             }
         }

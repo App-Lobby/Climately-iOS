@@ -75,10 +75,6 @@ class WeatherViewModel: ObservableObject {
         makeAPICall()
     }
     
-    public var currentWeatherData: Mirror {
-        Mirror(reflecting: weather.current)
-    }
-    
     public func makeAPICall() -> Void {
         ServiceManager.getCurrentWeatherData(key: "6fcda4db7aabf9cf2c61c59f04882b22", lat: 26.8467, lon: 80.9462) { result in
             switch result {

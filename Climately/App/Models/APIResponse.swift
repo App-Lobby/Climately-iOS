@@ -9,13 +9,13 @@ import SwiftUI
 
 public struct APIResponse: Decodable {
     public var current: Current
-    public var hourly: [Hourly]
-    public var daily: [Daily]
+    public var hourly: [Hourly]?
+    public var daily: [Daily]?
     
-    init(
+    internal init(
         current: Current = .init(),
-        hourly: [Hourly] = [],
-        daily: [Daily] = []
+        hourly: [Hourly]? = [],
+        daily: [Daily]? = []
     ) {
         self.current = current
         self.hourly = hourly

@@ -9,22 +9,22 @@ import SwiftUI
 
 extension APIResponse {
     public struct Current: Decodable {
-        public var temp: Double
-        public var pressure: Int
-        public var humidity: Int
-        public var wind_speed: Double
-        public var sunrise: Date
-        public var sunset: Date
-        public var weather: [Weather]
+        public var temp: Double?
+        public var pressure: Int?
+        public var humidity: Int?
+        public var wind_speed: Double?
+        public var sunrise: Date?
+        public var sunset: Date?
+        public var weather: [Weather]?
         
-        init(
-            temp: Double = 0,
-            pressure: Int = 0,
-            humidity: Int = 0,
-            wind_speed: Double = 0,
-            sunrise: Date = Date(),
-            sunset: Date = Date(),
-            weather: [APIResponse.Current.Weather] = []
+        internal init(
+            temp: Double? = nil,
+            pressure: Int? = nil,
+            humidity: Int? = nil,
+            wind_speed: Double? = nil,
+            sunrise: Date? = nil,
+            sunset: Date? = nil,
+            weather: [APIResponse.Current.Weather]? = []
         ) {
             self.temp = temp
             self.pressure = pressure
@@ -36,13 +36,15 @@ extension APIResponse {
         }
         
         public struct Weather: Decodable {
-            public var id: Int
+            public var id: Int?
             
-            init(id: Int) {
+            internal init(id: Int? = nil) {
                 self.id = id
             }
             
             public var weatherSFName: String {
+                guard let id = id else { return "" }
+
                 switch id {
                 case 200...232:
                     return "cloud.bolt"
@@ -50,6 +52,8 @@ extension APIResponse {
                     return "cloud.drizzle"
                 case 500...531:
                     return "cloud.rain"
+                case 600...621:
+                    return "cloud.snow"
                 default:
                     return "cloud"
                 }
@@ -57,28 +61,76 @@ extension APIResponse {
         }
         
         public struct CurrentDataType: Identifiable {
-            public var id: UUID = .init()
+            public var id: UUID
             public var title: String
             public var data: Any
+            public var haveAsset: Bool
+            
+            internal init(id: UUID = .init(),
+                 title: String,
+                 data: Any,
+                 haveAsset: Bool = false
+            ) {
+                self.id = id
+                self.title = title
+                self.data = data
+                self.haveAsset = haveAsset
+            }
         }
         
-        public var tempAsString: String {
+        public var getTemp: String {
+            guard let temp = temp else { return "" }
             return String(temp)
         }
         
-        public var humidityAsString: String {
+        public var getPressure: String {
+            guard let pressure = pressure else { return "" }
+            return String(pressure)
+        }
+        
+        public var getHumidity: String {
+            guard let humidity = humidity else { return "" }
             return String(humidity)
         }
         
-        public func weatherAssetId() -> Int {
-            return weather[0].id
+        public var getWindSpeed: String {
+            guard let wind_speed = wind_speed else { return "" }
+            return String(wind_speed)
+        }
+        
+        public var getSunRise: String {
+            guard let sunrise = sunrise else { return "" }
+            return DateFormatter.hourMin.string(from: sunrise)
+        }
+        
+        public var getSunSet: String {
+            guard let sunset = sunset else { return "" }
+            return DateFormatter.hourMin.string(from: sunset)
+        }
+        
+        public var getSfName: String {
+            guard let getSfName = weather?[0].weatherSFName else { return "" }
+            return getSfName
         }
         
         public func getCurrentWeatherData() -> [CurrentDataType] {
             var data: [CurrentDataType] = []
-            data.append(.init(title: "Temperature", data: tempAsString))
-            data.append(.init(title: "Humidity", data: humidityAsString))
+            data.append(.init(title: "Temperature", data: getTemp, haveAsset: true))
+            data.append(.init(title: "Pressure", data: getPressure))
+            data.append(.init(title: "Humidity", data: getHumidity))
+            data.append(.init(title: "Wind Speed", data: getWindSpeed))
+            data.append(.init(title: "Sun Rise", data: getSunRise))
+            data.append(.init(title: "Sun Set", data: getSunSet))
             return data
         }
+    }
+}
+
+
+extension DateFormatter {
+    static var hourMin: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter
     }
 }
