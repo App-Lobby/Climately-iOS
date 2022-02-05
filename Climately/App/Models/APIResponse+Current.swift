@@ -41,6 +41,44 @@ extension APIResponse {
             init(id: Int) {
                 self.id = id
             }
+            
+            public var weatherSFName: String {
+                switch id {
+                case 200...232:
+                    return "cloud.bolt"
+                case 300...321:
+                    return "cloud.drizzle"
+                case 500...531:
+                    return "cloud.rain"
+                default:
+                    return "cloud"
+                }
+            }
+        }
+        
+        public struct CurrentDataType: Identifiable {
+            public var id: UUID = .init()
+            public var title: String
+            public var data: Any
+        }
+        
+        public var tempAsString: String {
+            return String(temp)
+        }
+        
+        public var humidityAsString: String {
+            return String(humidity)
+        }
+        
+        public func weatherAssetId() -> Int {
+            return weather[0].id
+        }
+        
+        public func getCurrentWeatherData() -> [CurrentDataType] {
+            var data: [CurrentDataType] = []
+            data.append(.init(title: "Temperature", data: tempAsString))
+            data.append(.init(title: "Humidity", data: humidityAsString))
+            return data
         }
     }
 }

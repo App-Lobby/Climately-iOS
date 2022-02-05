@@ -44,13 +44,21 @@ struct HomeView: View {
     }
     
     private func currentWeatherInfoView() -> some View {
-        ForEach(Array(viewModel.tryThis().children), id: \.label) { child in
+        ForEach(viewModel.weather.current.getCurrentWeatherData(), id: \.id) { data in
             HStack {
-                Text("\(child.label!)")
+                Text("\(data.title)")
                 Spacer()
-                Text("\(String(describing: child.value))")
+                Text("\(data.data as! String)")
             }
         }
+//        Text("\(viewModel.weather.current.tempAsString())")
+//        ForEach(Array(viewModel.currentWeatherData.children), id: \.label) { child in
+//            HStack {
+//                Text("\(child.label!)")
+//                Spacer()
+//                Text("\(String(describing: child.value))")
+//            }
+//        }
     }
 }
 
@@ -67,6 +75,9 @@ class WeatherViewModel: ObservableObject {
         makeAPICall()
     }
     
+    public var currentWeatherData: Mirror {
+        Mirror(reflecting: weather.current)
+    }
     
     public func makeAPICall() -> Void {
         ServiceManager.getCurrentWeatherData(key: "6fcda4db7aabf9cf2c61c59f04882b22", lat: 26.8467, lon: 80.9462) { result in
@@ -79,15 +90,6 @@ class WeatherViewModel: ObservableObject {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    public func tryThis() -> Mirror {
-        let mirror = Mirror(reflecting: weather.current)
-        //        for child in mirror.children  {
-        //            print("Lebel: \(String(describing: child.label)) AND Value: \(child.value)")
-        //        }
-        
-        return mirror
     }
 }
 
