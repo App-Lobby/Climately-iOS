@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-//    @ObservedObject var viewModel: WeatherViewModel = .init()
+    @ObservedObject var viewModel: WeatherViewModel = .init()
     @State var search: String = ""
     
     var body: some View {
@@ -18,11 +18,21 @@ struct HomeView: View {
                     Section(header: Text(section.header)) {
                         switch section {
                         case .CITY:
-                            Text("A loop with city info")
+                            HStack {
+                                Text("Bengaluru")
+                                Spacer()
+                                Text("44.91, -10.33")
+                            }
                         case .CURRENTWEATHER:
-                            Text("A loop with current weather info")
+                            currentWeatherInfoView()
                         case .WEATHERFORCAST:
-                            Text("A loop with two forcast navigationlink")
+                            NavigationLink(destination: Text("welcome to hourly")) {
+                                Text("Get Hourly Forcast")
+                            }
+                            
+                            NavigationLink(destination: Text("welcome to daily")) {
+                                Text("Get Daily Forcast")
+                            }
                         }
                     }
                 }
@@ -30,6 +40,16 @@ struct HomeView: View {
             .navigationTitle("Climately")
             .searchable(text: $search)
             .listStyle(GroupedListStyle())
+        }
+    }
+    
+    private func currentWeatherInfoView() -> some View {
+        ForEach(Array(viewModel.tryThis().children), id: \.label) { child in
+            HStack {
+                Text("\(child.label!)")
+                Spacer()
+                Text("\(String(describing: child.value))")
+            }
         }
     }
 }
@@ -47,6 +67,7 @@ class WeatherViewModel: ObservableObject {
         makeAPICall()
     }
     
+    
     public func makeAPICall() -> Void {
         ServiceManager.getCurrentWeatherData(key: "6fcda4db7aabf9cf2c61c59f04882b22", lat: 26.8467, lon: 80.9462) { result in
             switch result {
@@ -58,6 +79,15 @@ class WeatherViewModel: ObservableObject {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    public func tryThis() -> Mirror {
+        let mirror = Mirror(reflecting: weather.current)
+        //        for child in mirror.children  {
+        //            print("Lebel: \(String(describing: child.label)) AND Value: \(child.value)")
+        //        }
+        
+        return mirror
     }
 }
 
