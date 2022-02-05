@@ -11,12 +11,12 @@ extension APIResponse {
     public struct Hourly: Decodable {
         public var dt: Date?
         public var temp: Double?
-        public var weather: [Weather]?
+        public var weather: [Weather]
         
         internal init(
             dt: Date?,
             temp: Double?,
-            weather: [Weather]?
+            weather: [Weather] = []
         ) {
             self.dt = dt
             self.temp = temp

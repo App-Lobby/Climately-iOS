@@ -15,7 +15,7 @@ extension APIResponse {
         public var wind_speed: Double?
         public var sunrise: Date?
         public var sunset: Date?
-        public var weather: [Weather]?
+        public var weather: [Weather]
         
         internal init(
             temp: Double? = nil,
@@ -24,7 +24,7 @@ extension APIResponse {
             wind_speed: Double? = nil,
             sunrise: Date? = nil,
             sunset: Date? = nil,
-            weather: [APIResponse.Current.Weather]? = []
+            weather: [APIResponse.Current.Weather] = []
         ) {
             self.temp = temp
             self.pressure = pressure
@@ -44,7 +44,7 @@ extension APIResponse {
             
             public var weatherSFName: String {
                 guard let id = id else { return "" }
-
+                
                 switch id {
                 case 200...232:
                     return "cloud.bolt"
@@ -63,13 +63,14 @@ extension APIResponse {
         public struct CurrentDataType: Identifiable {
             public var id: UUID
             public var title: String
-            public var data: Any
+            public var data: String
             public var haveAsset: Bool
             
-            internal init(id: UUID = .init(),
-                 title: String,
-                 data: Any,
-                 haveAsset: Bool = false
+            internal init(
+                id: UUID = .init(),
+                title: String,
+                data: String,
+                haveAsset: Bool = false
             ) {
                 self.id = id
                 self.title = title
@@ -109,8 +110,8 @@ extension APIResponse {
         }
         
         public var getSfName: String {
-            guard let getSfName = weather?[0].weatherSFName else { return "" }
-            return getSfName
+            guard !weather.isEmpty else { return "exclamationmark.triangle" }
+            return weather[0].weatherSFName
         }
         
         public func getCurrentWeatherData() -> [CurrentDataType] {
@@ -127,10 +128,4 @@ extension APIResponse {
 }
 
 
-extension DateFormatter {
-    static var hourMin: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter
-    }
-}
+

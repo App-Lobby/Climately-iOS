@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5424513427AE8A4A00B0D729 /* Extension+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5424513327AE8A4A00B0D729 /* Extension+DateFormatter.swift */; };
 		5493ECD527AD4D1F00B825CA /* ClimatelyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */; };
 		5493ECD727AD4D1F00B825CA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECD627AD4D1F00B825CA /* HomeView.swift */; };
 		5493ECD927AD4D2400B825CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5493ECD827AD4D2400B825CA /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5424513327AE8A4A00B0D729 /* Extension+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+DateFormatter.swift"; sourceTree = "<group>"; };
 		5493ECD127AD4D1F00B825CA /* Climately.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Climately.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimatelyApp.swift; sourceTree = "<group>"; };
 		5493ECD627AD4D1F00B825CA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -44,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5424513227AE8A3000B0D729 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5424513327AE8A4A00B0D729 /* Extension+DateFormatter.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		5493ECC827AD4D1E00B825CA = {
 			isa = PBXGroup;
 			children = (
@@ -108,10 +118,11 @@
 			isa = PBXGroup;
 			children = (
 				5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */,
-				5493ECEE27AD646A00B825CA /* Enums */,
-				5493ECEB27AD643700B825CA /* Serices */,
 				5493ECE227AD638E00B825CA /* Models */,
 				5493ECF327AD655800B825CA /* Views */,
+				5493ECEB27AD643700B825CA /* Serices */,
+				5493ECEE27AD646A00B825CA /* Enums */,
+				5424513227AE8A3000B0D729 /* Extensions */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -209,6 +220,7 @@
 				5493ECD527AD4D1F00B825CA /* ClimatelyApp.swift in Sources */,
 				5493ECE427AD63A300B825CA /* APIResponse.swift in Sources */,
 				5493ECE627AD63C600B825CA /* APIResponse+Current.swift in Sources */,
+				5424513427AE8A4A00B0D729 /* Extension+DateFormatter.swift in Sources */,
 				5493ECED27AD644700B825CA /* ServiceManager.swift in Sources */,
 				5493ECEA27AD640900B825CA /* APIResponse+Daily.swift in Sources */,
 			);

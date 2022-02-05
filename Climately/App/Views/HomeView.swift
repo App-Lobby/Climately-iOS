@@ -48,17 +48,10 @@ struct HomeView: View {
             HStack {
                 Text("\(data.title)")
                 Spacer()
-                Text("\(data.data as! String)")
+                Text("\(data.data)")
+                if data.haveAsset { Image(systemName: viewModel.weather.current.getSfName) }
             }
         }
-//        Text("\(viewModel.weather.current.tempAsString())")
-//        ForEach(Array(viewModel.currentWeatherData.children), id: \.label) { child in
-//            HStack {
-//                Text("\(child.label!)")
-//                Spacer()
-//                Text("\(String(describing: child.value))")
-//            }
-//        }
     }
 }
 
