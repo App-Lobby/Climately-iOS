@@ -79,8 +79,8 @@ extension APIResponse.Hourly {
     }
     
     public var getTemp: String {
-        guard let temp = temp else { return "" }
-        return String(temp)
+        guard let safeTemp = temp else { return "" }
+        return String("\(safeTemp) °C")
     }
     
     public var getSfName: String {

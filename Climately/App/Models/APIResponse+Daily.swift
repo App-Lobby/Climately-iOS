@@ -89,7 +89,7 @@ extension APIResponse {
         
         public var getTemp: String {
             guard let safeTemp = temp.day else { return "Loading" }
-            return String(safeTemp)
+            return String("\(safeTemp) °C")
         }
         
         public var getSfName: String {

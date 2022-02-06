@@ -94,18 +94,18 @@ extension APIResponse {
         }
         
         public var getTemp: String {
-            guard let temp = temp else { return "Loading.." }
-            return String(temp)
+            guard let safeTemp = temp else { return "Loading.." }
+            return String("\(safeTemp) °C")
         }
         
         public var getPressure: String {
             guard let pressure = pressure else { return "Loading.." }
-            return String(pressure)
+            return String("\(pressure) hPa")
         }
         
         public var getHumidity: String {
             guard let humidity = humidity else { return "Loading.." }
-            return String(humidity)
+            return String("\(humidity)%")
         }
         
         public var getWindSpeed: String {
@@ -140,6 +140,3 @@ extension APIResponse {
         }
     }
 }
-
-
-

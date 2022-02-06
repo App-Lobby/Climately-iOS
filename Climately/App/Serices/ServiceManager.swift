@@ -15,7 +15,7 @@ struct ServiceManager {
         completionHandler: @escaping (Result<APIResponse, NetworkError>) -> ()
     ) {
         
-        let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&appid=\(key)")
+        let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&appid=\(key)&units=metric")
         
         guard let safeURL = url else {
             completionHandler(.failure(NetworkError.wrongURL))
