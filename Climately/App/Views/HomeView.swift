@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var weatherViewModel: WeatherViewModel = .init()
-    @State var search: String = ""
     
     var body: some View {
         NavigationView {
@@ -19,9 +18,9 @@ struct HomeView: View {
                         switch section {
                         case .CITY:
                             HStack {
-                                Text("Bengaluru")
+                                Text(weatherViewModel.searched)
                                 Spacer()
-                                Text("44.91, -10.33")
+                                Text("\(weatherViewModel.searchedCoordinates.latitude), \(weatherViewModel.searchedCoordinates.longitude)")
                             }
                         case .CURRENTWEATHER:
                             currentWeatherInfoView()
@@ -29,7 +28,7 @@ struct HomeView: View {
                             NavigationLink(destination: HourlyForcastView(weatherViewModel: weatherViewModel)) {
                                 Text("Get Hourly Forcast")
                             }
-
+                            
                             NavigationLink(destination: DailyForcastView(weatherViewModel: weatherViewModel)) {
                                 Text("Get Daily Forcast")
                             }
@@ -37,8 +36,8 @@ struct HomeView: View {
                     }
                 }
             }
+            .searchable(text: $weatherViewModel.searched)
             .navigationTitle("Climately")
-            .searchable(text: $search)
             .listStyle(GroupedListStyle())
         }
     }
@@ -60,3 +59,4 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
     }
 }
+
