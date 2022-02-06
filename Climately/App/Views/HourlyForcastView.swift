@@ -8,31 +8,21 @@
 import SwiftUI
 
 struct HourlyForcastView: View {
-    @ObservedObject var weatherViewModel: WeatherViewModel
+    @ObservedObject var weatherViewModel: WeatherViewModel 
 
     var body: some View {
         List {
             ForEach(weatherViewModel.weather.hourly, id: \.id) { hourly in
-                DayInfoView(hourly: hourly)
+                HStack {
+                    Text(hourly.getDate)
+                    Spacer()
+                    Text(hourly.getTime)
+                    Spacer()
+                    Text(hourly.getTemp)
+                }
             }
         }
-    }
-}
-
-struct DayInfoView: View {
-    public var hourly: APIResponse.Hourly
-
-    var body: some View {
-        ForEach(hourly.getHourlyWeatherData(), id: \.id) { data in
-            HStack {
-                Text(data.date)
-                Spacer()
-                Text(data.time)
-                Spacer()
-                Text(data.temp)
-                Spacer()
-                Text("Image")
-            }
-        }
+        .navigationBarTitle("Hourly")
+        .listStyle(GroupedListStyle())
     }
 }

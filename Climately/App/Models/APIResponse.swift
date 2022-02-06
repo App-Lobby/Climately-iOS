@@ -7,21 +7,23 @@
 
 import SwiftUI
 
-public struct APIResponse: Identifiable, Decodable {
-    public var id: UUID?
+public struct APIResponse: Decodable {
     public var current: Current
     public var hourly: [Hourly]
     public var daily: [Daily]
     
-    internal init(
-        id: UUID? = .init(),
+    enum CodingKeys: String, CodingKey {
+        case current, hourly, daily
+    }
+    
+    init(
         current: Current = .init(),
         hourly: [Hourly] = [],
         daily: [Daily] = []
     ) {
-        self.id = id
         self.current = current
         self.hourly = hourly
         self.daily = daily
     }
+    
 }

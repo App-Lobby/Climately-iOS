@@ -17,6 +17,10 @@ extension APIResponse {
         public var sunset: Date?
         public var weather: [Weather]
         
+        private enum CodingKeys: String, CodingKey {
+            case temp, pressure, humidity, wind_speed, sunrise, sunset, weather
+        }
+        
         internal init(
             temp: Double? = nil,
             pressure: Int? = nil,
@@ -37,6 +41,10 @@ extension APIResponse {
         
         public struct Weather: Decodable {
             public var id: Int?
+            
+            private enum CodingKeys: String, CodingKey {
+                case id
+            }
             
             internal init(id: Int? = nil) {
                 self.id = id

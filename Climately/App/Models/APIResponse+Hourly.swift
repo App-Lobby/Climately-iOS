@@ -8,14 +8,18 @@
 import SwiftUI
 
 extension APIResponse {
-    public struct Hourly: Identifiable, Decodable {
-        public var id: UUID?
+    public struct Hourly: Decodable {
+        public var id: UUID = .init()
         public var dt: Date?
         public var temp: Double?
         public var weather: [Weather]
         
+        enum CodingKeys: String, CodingKey {
+            case dt, temp, weather
+        }
+        
         internal init(
-            id: UUID? = .init(),
+            id: UUID,
             dt: Date?,
             temp: Double?,
             weather: [Weather] = []
@@ -28,6 +32,10 @@ extension APIResponse {
         
         public struct Weather: Decodable {
             public var id: Int?
+            
+            enum CodingKeys: String, CodingKey {
+                case id
+            }
             
             internal init(id: Int? = nil) {
                 self.id = id
@@ -50,22 +58,15 @@ extension APIResponse {
                 }
             }
         }
-        
-        public struct HourlyDataType: Identifiable {
-            public var id: UUID = .init()
-            public var time: String
-            public var date: String
-            public var temp: String
-        }
-        
+
         public var getTime: String {
-            guard let getDate = dt else { return "" }
-            return DateFormatter.hourMin.string(from: getDate)
+            guard let safeDate = dt else { return "" }
+            return DateFormatter.hourMin.string(from: safeDate)
         }
         
         public var getDate: String {
-            guard let getDate = dt else { return "" }
-            return DateFormatter.todayTommorowDate.string(from: getDate)
+            guard let safeDate = dt else { return "" }
+            return DateFormatter.dateMonth.string(from: safeDate)
         }
         
         public var getTemp: String {
@@ -77,11 +78,6 @@ extension APIResponse {
             guard !weather.isEmpty else { return "exclamationmark.triangle" }
             return weather[0].weatherSFName
         }
-        
-        public func getHourlyWeatherData() -> [HourlyDataType] {
-            var data: [HourlyDataType] = []
-            data.append(.init(time: getTime, date: getDate, temp: getTemp))
-            return data
-        }
+
     }
 }

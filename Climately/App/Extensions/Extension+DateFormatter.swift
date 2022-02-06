@@ -22,4 +22,10 @@ extension DateFormatter {
         formtter.doesRelativeDateFormatting = true
         return formtter
     }
+    
+    static var dateMonth: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d"
+        return formatter
+    }
 }
