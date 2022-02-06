@@ -30,7 +30,7 @@ struct HomeView: View {
                                 Text("Get Hourly Forcast")
                             }
 
-                            NavigationLink(destination: Text("welcome to daily")) {
+                            NavigationLink(destination: DailyForcastView(weatherViewModel: weatherViewModel)) {
                                 Text("Get Daily Forcast")
                             }
                         }

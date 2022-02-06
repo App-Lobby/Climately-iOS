@@ -18,7 +18,7 @@ extension APIResponse {
             case dt, temp, weather
         }
         
-        internal init(
+        init(
             id: UUID,
             dt: Date?,
             temp: Double?,
@@ -37,7 +37,7 @@ extension APIResponse {
                 case id
             }
             
-            internal init(id: Int? = nil) {
+            init(id: Int? = nil) {
                 self.id = id
             }
             
@@ -46,38 +46,45 @@ extension APIResponse {
                 
                 switch id {
                 case 200...232:
-                    return "cloud.bolt"
-                case 300...321:
+                    return "cloud.bolt.rain"
+                case 300...301:
                     return "cloud.drizzle"
                 case 500...531:
                     return "cloud.rain"
-                case 600...621:
+                case 600...622:
                     return "cloud.snow"
+                case 701...781:
+                    return "cloud.fog"
+                case 800:
+                    return "sun.max"
+                case 801...804:
+                    return "cloud.sun"
                 default:
-                    return "cloud"
+                    return "cloud.sun"
                 }
             }
         }
+    }
+}
 
-        public var getTime: String {
-            guard let safeDate = dt else { return "" }
-            return DateFormatter.hourMin.string(from: safeDate)
-        }
-        
-        public var getDate: String {
-            guard let safeDate = dt else { return "" }
-            return DateFormatter.dateMonth.string(from: safeDate)
-        }
-        
-        public var getTemp: String {
-            guard let temp = temp else { return "" }
-            return String(temp)
-        }
-        
-        public var getSfName: String {
-            guard !weather.isEmpty else { return "exclamationmark.triangle" }
-            return weather[0].weatherSFName
-        }
-
+extension APIResponse.Hourly {
+    public var getTime: String {
+        guard let safeDate = dt else { return "" }
+        return DateFormatter.hourMin.string(from: safeDate)
+    }
+    
+    public var getDate: String {
+        guard let safeDate = dt else { return "" }
+        return DateFormatter.dateMonth.string(from: safeDate)
+    }
+    
+    public var getTemp: String {
+        guard let temp = temp else { return "" }
+        return String(temp)
+    }
+    
+    public var getSfName: String {
+        guard !weather.isEmpty else { return "exclamationmark.triangle" }
+        return weather[0].weatherSFName
     }
 }

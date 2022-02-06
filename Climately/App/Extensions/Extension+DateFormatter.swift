@@ -14,18 +14,9 @@ extension DateFormatter {
         return formatter
     }
     
-    static var todayTommorowDate: DateFormatter {
-        let formtter = DateFormatter()
-        formtter.timeStyle = .none
-        formtter.dateStyle = .medium
-        formtter.locale = Locale(identifier: "en_GB")
-        formtter.doesRelativeDateFormatting = true
-        return formtter
-    }
-    
     static var dateMonth: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM d"
+        formatter.dateFormat = "dd MMM"
         return formatter
     }
 }

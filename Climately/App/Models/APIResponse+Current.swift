@@ -55,15 +55,21 @@ extension APIResponse {
                 
                 switch id {
                 case 200...232:
-                    return "cloud.bolt"
-                case 300...321:
+                    return "cloud.bolt.rain"
+                case 300...301:
                     return "cloud.drizzle"
                 case 500...531:
                     return "cloud.rain"
-                case 600...621:
+                case 600...622:
                     return "cloud.snow"
+                case 701...781:
+                    return "cloud.fog"
+                case 800:
+                    return "sun.max"
+                case 801...804:
+                    return "cloud.sun"
                 default:
-                    return "cloud"
+                    return "cloud.sun"
                 }
             }
         }
@@ -88,32 +94,32 @@ extension APIResponse {
         }
         
         public var getTemp: String {
-            guard let temp = temp else { return "" }
+            guard let temp = temp else { return "Loading.." }
             return String(temp)
         }
         
         public var getPressure: String {
-            guard let pressure = pressure else { return "" }
+            guard let pressure = pressure else { return "Loading.." }
             return String(pressure)
         }
         
         public var getHumidity: String {
-            guard let humidity = humidity else { return "" }
+            guard let humidity = humidity else { return "Loading.." }
             return String(humidity)
         }
         
         public var getWindSpeed: String {
-            guard let wind_speed = wind_speed else { return "" }
+            guard let wind_speed = wind_speed else { return "Loading.." }
             return String(wind_speed)
         }
         
         public var getSunRise: String {
-            guard let sunrise = sunrise else { return "" }
+            guard let sunrise = sunrise else { return "Loading.." }
             return DateFormatter.hourMin.string(from: sunrise)
         }
         
         public var getSunSet: String {
-            guard let sunset = sunset else { return "" }
+            guard let sunset = sunset else { return "Loading.." }
             return DateFormatter.hourMin.string(from: sunset)
         }
         
