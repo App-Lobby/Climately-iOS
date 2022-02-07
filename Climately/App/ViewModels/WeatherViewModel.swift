@@ -12,12 +12,25 @@ class WeatherViewModel: ObservableObject {
     @Published var weather: APIResponse = .init()
     @Published var locationObj: LocationManager = .init()
     
-    @Published var searchedCoordinates: CLLocationCoordinate2D = .init()
-    @Published var searchedAddress: String = "Bengaluru"
+    private var searchWorkItem: DispatchWorkItem? = nil
+    private let citySearchQueue = DispatchQueue(label: "city", qos: .userInitiated)
+    
+    @Published var searchedCoordinates: CLLocationCoordinate2D = .init(latitude: 12.9716, longitude: 77.5946)
+//    @Published var searchedAddress: String = "Bengaluru"
     @Published var queryCity: String = "Bengaluru" {
         didSet {
-            prepareForCall()
-            makeAPICall()
+            searchWorkItem?.cancel()
+            searchWorkItem = DispatchWorkItem { [weak self] in
+                self?.prepareForCall()
+                self?.makeAPICall()
+            }
+            
+            guard let searchWorkItem = searchWorkItem else {
+                assertionFailure()
+                return
+            }
+            
+            citySearchQueue.asyncAfter(deadline: .now() + 2, execute: searchWorkItem)
         }
     }
     
@@ -29,15 +42,18 @@ class WeatherViewModel: ObservableObject {
     private func prepareForCall() -> Void {
         locationObj.getCoordinate(addressString: queryCity) { coordinates, error in
             if let coordinates = coordinates {
+                print("LONG",coordinates.longitude)
+                print("LANT",coordinates.latitude)
                 self.searchedCoordinates = coordinates
             }
         }
         
-        locationObj.getAddress(coordinates: searchedCoordinates) { address, error in
-            if let address = address {
-                self.searchedAddress = address
-            }
-        }
+//        locationObj.getAddress(coordinates: searchedCoordinates) { address, error in
+//            if let address = address {
+//                print("ADDRESS", address)
+//                self.searchedAddress = address
+//            }
+//        }
     }
     
     private func makeAPICall() -> Void {

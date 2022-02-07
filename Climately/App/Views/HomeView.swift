@@ -18,7 +18,7 @@ struct HomeView: View {
                         switch section {
                         case .CITY:
                             HStack {
-                                Text(weatherViewModel.searchedAddress)
+                                Text(weatherViewModel.queryCity)
                                 Spacer()
                                 Text("\(weatherViewModel.searchedCoordinates.latitude), \(weatherViewModel.searchedCoordinates.longitude)")
                             }

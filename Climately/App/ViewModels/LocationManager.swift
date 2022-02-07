@@ -44,24 +44,24 @@ extension LocationManager {
         }
     }
     
-    public func getAddress(
-        coordinates: CLLocationCoordinate2D,
-        completionHandler: @escaping(String?, NSError?) -> Void
-    ) {
-        let geocoder = CLGeocoder()
-        
-        geocoder.reverseGeocodeLocation(.init(latitude: coordinates.latitude, longitude: coordinates.longitude)) { (placemarks, error) in
-            guard error == nil else {
-                completionHandler(nil , error as NSError?)
-                return
-            }
-            
-            if let safeLocality = placemarks?[0].locality {
-                completionHandler(safeLocality, nil)
-                return
-            }
-        }
-    }
+//    public func getAddress(
+//        coordinates: CLLocationCoordinate2D,
+//        completionHandler: @escaping(String?, NSError?) -> Void
+//    ) {
+//        let geocoder = CLGeocoder()
+//
+//        geocoder.reverseGeocodeLocation(.init(latitude: coordinates.latitude, longitude: coordinates.longitude)) { (placemarks, error) in
+//            guard error == nil else {
+//                completionHandler(nil , error as NSError?)
+//                return
+//            }
+//
+//            if let safeLocality = placemarks?[0].locality {
+//                completionHandler(safeLocality, nil)
+//                return
+//            }
+//        }
+//    }
 }
 
 extension LocationManager {
