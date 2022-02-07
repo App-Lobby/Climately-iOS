@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5420550F27AFDB0E007AD286 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5420550E27AFDB0E007AD286 /* SearchModel.swift */; };
 		5424513427AE8A4A00B0D729 /* Extension+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5424513327AE8A4A00B0D729 /* Extension+DateFormatter.swift */; };
 		5424513727AE8BC000B0D729 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5424513627AE8BC000B0D729 /* WeatherViewModel.swift */; };
 		5424513A27AE8C0A00B0D729 /* ViewEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5424513927AE8C0A00B0D729 /* ViewEnums.swift */; };
@@ -26,7 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5420550E27AFDB0E007AD286 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		5424513327AE8A4A00B0D729 /* Extension+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+DateFormatter.swift"; sourceTree = "<group>"; };
 		5424513627AE8BC000B0D729 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		5424513927AE8C0A00B0D729 /* ViewEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEnums.swift; sourceTree = "<group>"; };
@@ -56,17 +54,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5420550D27AFDAB2007AD286 /* ResponseModel */ = {
-			isa = PBXGroup;
-			children = (
-				5493ECE327AD63A300B825CA /* APIResponse.swift */,
-				5493ECE527AD63C600B825CA /* APIResponse+Current.swift */,
-				5493ECE727AD63EA00B825CA /* APIResponse+Hourly.swift */,
-				5493ECE927AD640900B825CA /* APIResponse+Daily.swift */,
-			);
-			path = ResponseModel;
-			sourceTree = "<group>";
-		};
 		5424513227AE8A3000B0D729 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,8 +107,10 @@
 		5493ECE227AD638E00B825CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5420550D27AFDAB2007AD286 /* ResponseModel */,
-				5420550E27AFDB0E007AD286 /* SearchModel.swift */,
+				5493ECE327AD63A300B825CA /* APIResponse.swift */,
+				5493ECE527AD63C600B825CA /* APIResponse+Current.swift */,
+				5493ECE727AD63EA00B825CA /* APIResponse+Hourly.swift */,
+				5493ECE927AD640900B825CA /* APIResponse+Daily.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,7 +234,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5420550F27AFDB0E007AD286 /* SearchModel.swift in Sources */,
 				5493ECF027AD649400B825CA /* NetworkingEnums.swift in Sources */,
 				5493ECE827AD63EA00B825CA /* APIResponse+Hourly.swift in Sources */,
 				5493ECD727AD4D1F00B825CA /* HomeView.swift in Sources */,

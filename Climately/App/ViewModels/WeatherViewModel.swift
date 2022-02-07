@@ -31,9 +31,7 @@ class WeatherViewModel: ObservableObject {
         }
         
         locationObj.getAddress(coordinates: searchedCoordinates) { address, error in
-            if let address = address?.locality {
-                self.searchedAddress = address
-            }
+            self.searchedAddress = address
         }
     }
     

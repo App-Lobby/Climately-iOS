@@ -43,10 +43,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate  {
                 return
             }
             
-            if let placemark = placemarks?[0] {
-                let location = placemark.location!
-                
-                completionHandler(location.coordinate, nil)
+            if let safeLocation = placemarks?[0].location!.coordinate {
+                completionHandler(safeLocation, nil)
                 return
             }
         }
@@ -54,18 +52,20 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate  {
     
     public func getAddress(
         coordinates: CLLocationCoordinate2D,
-        completionHandler: @escaping(CLPlacemark?, NSError?) -> Void
+        completionHandler: @escaping(String, NSError?) -> Void
     ) {
         let geocoder = CLGeocoder()
         
         geocoder.reverseGeocodeLocation(.init(latitude: coordinates.latitude, longitude: coordinates.longitude)) { (placemarks, error) in
-            if error == nil {
-                let firstLocation = placemarks?[0]
-                completionHandler(firstLocation, nil)
+            guard error != nil else {
+                completionHandler("Error Ocured" , error as NSError?)
+                return
             }
             
-            completionHandler(nil, error as NSError?)
-            
+            if let safeLocality = placemarks?[0].locality {
+                completionHandler(safeLocality, nil)
+                return
+            }
         }
     }
 }
