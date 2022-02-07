@@ -18,7 +18,7 @@ struct HomeView: View {
                         switch section {
                         case .CITY:
                             HStack {
-                                Text(weatherViewModel.searched)
+                                Text(weatherViewModel.searchedAddress)
                                 Spacer()
                                 Text("\(weatherViewModel.searchedCoordinates.latitude), \(weatherViewModel.searchedCoordinates.longitude)")
                             }
@@ -36,7 +36,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .searchable(text: $weatherViewModel.searched)
+            .searchable(text: $weatherViewModel.serachedText)
             .navigationTitle("Climately")
             .listStyle(GroupedListStyle())
         }

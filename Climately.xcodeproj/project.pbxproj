@@ -22,6 +22,7 @@
 		5493ECEA27AD640900B825CA /* APIResponse+Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECE927AD640900B825CA /* APIResponse+Daily.swift */; };
 		5493ECED27AD644700B825CA /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECEC27AD644700B825CA /* ServiceManager.swift */; };
 		5493ECF027AD649400B825CA /* NetworkingEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECEF27AD649400B825CA /* NetworkingEnums.swift */; };
+		54F36D5927B0F9870090CE4A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F36D5827B0F9870090CE4A /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		5493ECE927AD640900B825CA /* APIResponse+Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIResponse+Daily.swift"; sourceTree = "<group>"; };
 		5493ECEC27AD644700B825CA /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		5493ECEF27AD649400B825CA /* NetworkingEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingEnums.swift; sourceTree = "<group>"; };
+		54F36D5827B0F9870090CE4A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				5424513627AE8BC000B0D729 /* WeatherViewModel.swift */,
+				54F36D5827B0F9870090CE4A /* LocationManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				5493ECE627AD63C600B825CA /* APIResponse+Current.swift in Sources */,
 				5424513427AE8A4A00B0D729 /* Extension+DateFormatter.swift in Sources */,
 				5493ECED27AD644700B825CA /* ServiceManager.swift in Sources */,
+				54F36D5927B0F9870090CE4A /* LocationManager.swift in Sources */,
 				5493ECEA27AD640900B825CA /* APIResponse+Daily.swift in Sources */,
 				5424513A27AE8C0A00B0D729 /* ViewEnums.swift in Sources */,
 			);
