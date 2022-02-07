@@ -9,7 +9,7 @@ import SwiftUI
 import CoreLocation
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate  {
-    @Published public var authorizationStatus: CLAuthorizationStatus
+    @Published private var authorizationStatus: CLAuthorizationStatus
     private let locationManager: CLLocationManager
     
     override init() {
@@ -22,24 +22,18 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate  {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
     }
-    
-    func requestPermission() {
-        locationManager.requestWhenInUseAuthorization()
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        authorizationStatus = manager.authorizationStatus
-    }
-    
+}
+
+extension LocationManager {
     public func getCoordinate(
         addressString : String,
-        completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void
+        completionHandler: @escaping(CLLocationCoordinate2D?, NSError?) -> Void
     ) {
         let geocoder = CLGeocoder()
         
         geocoder.geocodeAddressString(addressString) { (placemarks, error) in
-            guard error != nil else {
-                completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
+            guard error == nil else {
+                completionHandler(nil, error as NSError?)
                 return
             }
             
@@ -52,13 +46,13 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate  {
     
     public func getAddress(
         coordinates: CLLocationCoordinate2D,
-        completionHandler: @escaping(String, NSError?) -> Void
+        completionHandler: @escaping(String?, NSError?) -> Void
     ) {
         let geocoder = CLGeocoder()
         
         geocoder.reverseGeocodeLocation(.init(latitude: coordinates.latitude, longitude: coordinates.longitude)) { (placemarks, error) in
-            guard error != nil else {
-                completionHandler("Error Ocured" , error as NSError?)
+            guard error == nil else {
+                completionHandler(nil , error as NSError?)
                 return
             }
             
@@ -67,5 +61,15 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate  {
                 return
             }
         }
+    }
+}
+
+extension LocationManager {
+    func requestPermission() {
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        authorizationStatus = manager.authorizationStatus
     }
 }

@@ -36,7 +36,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .searchable(text: $weatherViewModel.serachedText)
+            .searchable(text: $weatherViewModel.queryCity)
             .navigationTitle("Climately")
             .listStyle(GroupedListStyle())
         }

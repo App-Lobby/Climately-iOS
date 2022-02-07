@@ -13,34 +13,34 @@ class WeatherViewModel: ObservableObject {
     @Published var locationObj: LocationManager = .init()
     
     @Published var searchedCoordinates: CLLocationCoordinate2D = .init()
-    @Published var searchedAddress: String = .init()
-    @Published var serachedText: String = "Bengaluru"
-    {
+    @Published var searchedAddress: String = "Bengaluru"
+    @Published var queryCity: String = "Bengaluru" {
         didSet {
-            doThis()
+            prepareForCall()
+            makeAPICall()
         }
     }
     
     init() {
-        doThis()
+        prepareForCall()
+        makeAPICall()
     }
     
-    func doThis() {
-        locationObj.getCoordinate(addressString: serachedText) { coordinates, error in
-            self.searchedCoordinates = coordinates
+    private func prepareForCall() -> Void {
+        locationObj.getCoordinate(addressString: queryCity) { coordinates, error in
+            if let coordinates = coordinates {
+                self.searchedCoordinates = coordinates
+            }
         }
         
         locationObj.getAddress(coordinates: searchedCoordinates) { address, error in
-            self.searchedAddress = address
+            if let address = address {
+                self.searchedAddress = address
+            }
         }
     }
     
-    public func makeAPICall() -> Void {
-        
-        locationObj.getCoordinate(addressString: serachedText) { coordinates, error in
-            self.searchedCoordinates = coordinates
-        }
-        
+    private func makeAPICall() -> Void {
         ServiceManager.getCurrentWeatherData(
             key: "da6abe8ec13dffbea262e927ed379fb7",
             lat: searchedCoordinates.latitude,
