@@ -45,6 +45,13 @@ struct HomeView: View {
             }, label: {
                 Text("Reload")
             }))
+            .alert(isPresented: $weatherViewModel.showPopUp) {
+                Alert(
+                    title: Text(weatherViewModel.popUpType.title),
+                    message: Text(weatherViewModel.popUpType.message),
+                    dismissButton: .cancel()
+                )
+            }
         }
     }
     

@@ -15,19 +15,20 @@ class WeatherViewModel: ObservableObject {
     @Published var searchedCoordinates: CLLocationCoordinate2D = .init(latitude: 12.9716, longitude: 77.5946)
     @Published var queryCity: String = "Bengaluru"
     
+    @Published var showPopUp: Bool = false
+    @Published var popUpType: PopUpType = .nothing
+    
     init() {
         setUpWeather()
     }
     
     public func setUpWeather() -> Void {
         locationObj.getCoordinate(addressString: queryCity) { coordinates, error in
-            if let error = error {
-                print("Error while getting coordinate", error.localizedDescription)
-                // Mark:- Pop-up with no city found
-                
-                // Mark:- Making nil the fields
+            guard error == nil else {
                 self.searchedCoordinates = .init()
                 self.weather = .init()
+                self.popUpType = .wentWrong
+                self.showPopUp = true
                 return
             }
             
@@ -45,10 +46,14 @@ class WeatherViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         self.weather = data
                     }
-                case .failure(let error):
-                    print("HERE IS THE ISSUEE", error.localizedDescription)
+                case .failure(_):
+                    DispatchQueue.main.async {
+                        self.popUpType = .wentWrong
+                        self.showPopUp = true
+                    }
                 }
             }
         }
     }
 }
+
