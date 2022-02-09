@@ -97,32 +97,32 @@ extension APIResponse.Current {
     }
     
     public var getTemp: String {
-        guard let safeTemp = temp else { return "Loading.." }
+        guard let safeTemp = temp else { return "" }
         return String("\(safeTemp) °C")
     }
     
     public var getPressure: String {
-        guard let pressure = pressure else { return "Loading.." }
+        guard let pressure = pressure else { return "" }
         return String("\(pressure) hPa")
     }
     
     public var getHumidity: String {
-        guard let humidity = humidity else { return "Loading.." }
+        guard let humidity = humidity else { return "" }
         return String("\(humidity)%")
     }
     
     public var getWindSpeed: String {
-        guard let wind_speed = wind_speed else { return "Loading.." }
+        guard let wind_speed = wind_speed else { return "" }
         return String(wind_speed)
     }
     
     public var getSunRise: String {
-        guard let sunrise = sunrise else { return "Loading.." }
+        guard let sunrise = sunrise else { return "" }
         return DateFormatter.hourMin.string(from: sunrise)
     }
     
     public var getSunSet: String {
-        guard let sunset = sunset else { return "Loading.." }
+        guard let sunset = sunset else { return "" }
         return DateFormatter.hourMin.string(from: sunset)
     }
     
