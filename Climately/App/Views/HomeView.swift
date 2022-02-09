@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var weatherViewModel: WeatherViewModel = .init()
-    
+    @State var text = ""
     var body: some View {
         NavigationView {
             List {
@@ -17,11 +17,13 @@ struct HomeView: View {
                     Section(header: Text(section.header)) {
                         switch section {
                         case .CITY:
-                            HStack {
-                                Text(weatherViewModel.queryCity)
-                                Spacer()
-                                Text("\(weatherViewModel.searchedCoordinates.latitude), \(weatherViewModel.searchedCoordinates.longitude)")
-                            }
+                                HStack {
+                                    TextField("Enter City Name", text: $weatherViewModel.queryCity) {
+                                        weatherViewModel.setUpWeather()
+                                    }
+                                    Spacer()
+                                    Text("\(weatherViewModel.searchedCoordinates.latitude), \(weatherViewModel.searchedCoordinates.longitude)")
+                                }
                         case .CURRENTWEATHER:
                             currentWeatherInfoView()
                         case .WEATHERFORCAST:
@@ -36,9 +38,13 @@ struct HomeView: View {
                     }
                 }
             }
-            .searchable(text: $weatherViewModel.queryCity)
             .navigationTitle("Climately")
             .listStyle(GroupedListStyle())
+            .navigationBarItems(trailing: Button(action: {
+                weatherViewModel.setUpWeather()
+            }, label: {
+                Text("Reload")
+            }))
         }
     }
     
