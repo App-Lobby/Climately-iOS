@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum PopUpType {
+public enum PopUpType {
     case nothing
     case wentWrong
     

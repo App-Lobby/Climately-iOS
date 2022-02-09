@@ -18,11 +18,11 @@ struct HomeView: View {
                         switch section {
                         case .CITY:
                                 HStack {
-                                    TextField("Enter City Name", text: $weatherViewModel.queryCity) {
+                                    TextField("Enter City Name", text: $weatherViewModel.queryLocationInfo.queryCity) {
                                         weatherViewModel.setUpWeather()
                                     }
                                     Spacer()
-                                    Text("\(weatherViewModel.searchedCoordinates.latitude), \(weatherViewModel.searchedCoordinates.longitude)")
+                                    Text("\(weatherViewModel.queryLocationInfo.queryCoordinates.latitude), \(weatherViewModel.queryLocationInfo.queryCoordinates.longitude)")
                                 }
                         case .CURRENTWEATHER:
                             currentWeatherInfoView()
@@ -45,10 +45,10 @@ struct HomeView: View {
             }, label: {
                 Text("Reload")
             }))
-            .alert(isPresented: $weatherViewModel.showPopUp) {
+            .alert(isPresented: $weatherViewModel.popUp.showPopUp) {
                 Alert(
-                    title: Text(weatherViewModel.popUpType.title),
-                    message: Text(weatherViewModel.popUpType.message),
+                    title: Text(weatherViewModel.popUp.popUpType.title),
+                    message: Text(weatherViewModel.popUp.popUpType.message),
                     dismissButton: .cancel()
                 )
             }

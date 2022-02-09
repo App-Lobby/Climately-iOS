@@ -12,6 +12,8 @@
 		5424513A27AE8C0A00B0D729 /* ViewEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5424513927AE8C0A00B0D729 /* ViewEnums.swift */; };
 		5424513C27AE8D2C00B0D729 /* HourlyForcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5424513B27AE8D2C00B0D729 /* HourlyForcastView.swift */; };
 		54833A8D27B3A3C200203CA2 /* PopUpEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54833A8C27B3A3C200203CA2 /* PopUpEnums.swift */; };
+		54833A9127B3A92200203CA2 /* QueryLocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54833A9027B3A92200203CA2 /* QueryLocationInfo.swift */; };
+		54833A9327B3A93B00203CA2 /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54833A9227B3A93B00203CA2 /* PopUp.swift */; };
 		5493ECD527AD4D1F00B825CA /* ClimatelyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */; };
 		5493ECD727AD4D1F00B825CA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5493ECD627AD4D1F00B825CA /* HomeView.swift */; };
 		5493ECD927AD4D2400B825CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5493ECD827AD4D2400B825CA /* Assets.xcassets */; };
@@ -31,6 +33,8 @@
 		5424513927AE8C0A00B0D729 /* ViewEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEnums.swift; sourceTree = "<group>"; };
 		5424513B27AE8D2C00B0D729 /* HourlyForcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForcastView.swift; sourceTree = "<group>"; };
 		54833A8C27B3A3C200203CA2 /* PopUpEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpEnums.swift; sourceTree = "<group>"; };
+		54833A9027B3A92200203CA2 /* QueryLocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryLocationInfo.swift; sourceTree = "<group>"; };
+		54833A9227B3A93B00203CA2 /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
 		5493ECD127AD4D1F00B825CA /* Climately.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Climately.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5493ECD427AD4D1F00B825CA /* ClimatelyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimatelyApp.swift; sourceTree = "<group>"; };
 		5493ECD627AD4D1F00B825CA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -73,6 +77,17 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		54833A8E27B3A90600203CA2 /* ResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				5493ECE327AD63A300B825CA /* APIResponse.swift */,
+				5493ECE527AD63C600B825CA /* APIResponse+Current.swift */,
+				5493ECE727AD63EA00B825CA /* APIResponse+Hourly.swift */,
+				5493ECE927AD640900B825CA /* APIResponse+Daily.swift */,
+			);
+			path = ResponseModel;
+			sourceTree = "<group>";
+		};
 		5493ECC827AD4D1E00B825CA = {
 			isa = PBXGroup;
 			children = (
@@ -109,10 +124,9 @@
 		5493ECE227AD638E00B825CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5493ECE327AD63A300B825CA /* APIResponse.swift */,
-				5493ECE527AD63C600B825CA /* APIResponse+Current.swift */,
-				5493ECE727AD63EA00B825CA /* APIResponse+Hourly.swift */,
-				5493ECE927AD640900B825CA /* APIResponse+Daily.swift */,
+				54833A8E27B3A90600203CA2 /* ResponseModel */,
+				54833A9027B3A92200203CA2 /* QueryLocationInfo.swift */,
+				54833A9227B3A93B00203CA2 /* PopUp.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,6 +261,8 @@
 				5424513C27AE8D2C00B0D729 /* HourlyForcastView.swift in Sources */,
 				5493ECE627AD63C600B825CA /* APIResponse+Current.swift in Sources */,
 				5424513427AE8A4A00B0D729 /* Extension+DateFormatter.swift in Sources */,
+				54833A9327B3A93B00203CA2 /* PopUp.swift in Sources */,
+				54833A9127B3A92200203CA2 /* QueryLocationInfo.swift in Sources */,
 				5493ECED27AD644700B825CA /* ServiceManager.swift in Sources */,
 				54F36D5927B0F9870090CE4A /* LocationManager.swift in Sources */,
 				5493ECEA27AD640900B825CA /* APIResponse+Daily.swift in Sources */,

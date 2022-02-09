@@ -12,34 +12,35 @@ class WeatherViewModel: ObservableObject {
     @Published var weather: APIResponse = .init()
     @Published var locationObj: LocationManager = .init()
     
-    @Published var searchedCoordinates: CLLocationCoordinate2D = .init(latitude: 12.9716, longitude: 77.5946)
-    @Published var queryCity: String = "Bengaluru"
+    @Published var queryLocationInfo: QueryLocationInfo = .init()
     
-    @Published var showPopUp: Bool = false
-    @Published var popUpType: PopUpType = .nothing
+//    @Published var searchedCoordinates: CLLocationCoordinate2D = .init(latitude: 12.9716, longitude: 77.5946)
+//    @Published var queryCity: String = "Bengaluru"
+    
+    @Published var popUp: PopUp = .init()
     
     init() {
         setUpWeather()
     }
     
     public func setUpWeather() -> Void {
-        locationObj.getCoordinate(addressString: queryCity) { coordinates, error in
+        locationObj.getCoordinate(addressString: queryLocationInfo.queryCity) { coordinates, error in
             guard error == nil else {
-                self.searchedCoordinates = .init()
+                self.queryLocationInfo.queryCoordinates = .init()
                 self.weather = .init()
-                self.popUpType = .wentWrong
-                self.showPopUp = true
+                self.popUp.popUpType = .wentWrong
+                self.popUp.showPopUp = true
                 return
             }
             
             guard let coordinates = coordinates else { return }
 
-            self.searchedCoordinates = coordinates
+            self.queryLocationInfo.queryCoordinates = coordinates
             
             ServiceManager.getCurrentWeatherData(
                 key: "da6abe8ec13dffbea262e927ed379fb7",
-                lat: self.searchedCoordinates.latitude,
-                lon: self.searchedCoordinates.longitude
+                lat: self.queryLocationInfo.queryCoordinates.latitude,
+                lon: self.queryLocationInfo.queryCoordinates.longitude
             ) { result in
                 switch result {
                 case .success(let data):
@@ -48,12 +49,11 @@ class WeatherViewModel: ObservableObject {
                     }
                 case .failure(_):
                     DispatchQueue.main.async {
-                        self.popUpType = .wentWrong
-                        self.showPopUp = true
+                        self.popUp.popUpType = .wentWrong
+                        self.popUp.showPopUp = true
                     }
                 }
             }
         }
     }
 }
-

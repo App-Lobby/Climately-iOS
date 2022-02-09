@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Sections: CaseIterable {
+public enum Sections: CaseIterable {
     
     case CITY
     case CURRENTWEATHER
