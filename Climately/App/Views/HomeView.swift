@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject var weatherViewModel: WeatherViewModel = .init()
     @State var text = ""
+    
     var body: some View {
         NavigationView {
             List {
@@ -28,11 +29,11 @@ struct HomeView: View {
                             currentWeatherInfoView()
                         case .WEATHERFORCAST:
                             NavigationLink(destination: HourlyForcastView(weatherViewModel: weatherViewModel)) {
-                                Text("Get Hourly Forcast")
+                                Text("Get Hourly Forecast")
                             }
                             
                             NavigationLink(destination: DailyForcastView(weatherViewModel: weatherViewModel)) {
-                                Text("Get Daily Forcast")
+                                Text("Get Daily Forecast")
                             }
                         }
                     }
@@ -52,6 +53,7 @@ struct HomeView: View {
                     dismissButton: .cancel()
                 )
             }
+            .overlay(Text("Created by Yasir").font(.caption), alignment: .bottom)
         }
     }
     
