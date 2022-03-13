@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HourlyForcastView: View {
+struct HourlyForecastView: View {
     @ObservedObject var weatherViewModel: WeatherViewModel 
 
     var body: some View {

@@ -27,12 +27,12 @@ struct HomeView: View {
                                 }
                         case .CURRENTWEATHER:
                             currentWeatherInfoView()
-                        case .WEATHERFORCAST:
-                            NavigationLink(destination: HourlyForcastView(weatherViewModel: weatherViewModel)) {
+                        case .WEATHERFORECAST:
+                            NavigationLink(destination: HourlyForecastView(weatherViewModel: weatherViewModel)) {
                                 Text("Get Hourly Forecast")
                             }
                             
-                            NavigationLink(destination: DailyForcastView(weatherViewModel: weatherViewModel)) {
+                            NavigationLink(destination: DailyForecastView(weatherViewModel: weatherViewModel)) {
                                 Text("Get Daily Forecast")
                             }
                         }

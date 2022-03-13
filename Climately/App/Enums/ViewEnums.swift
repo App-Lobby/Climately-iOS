@@ -11,7 +11,7 @@ public enum Sections: CaseIterable {
     
     case CITY
     case CURRENTWEATHER
-    case WEATHERFORCAST
+    case WEATHERFORECAST
     
     public var header: String {
         switch self {
@@ -19,8 +19,8 @@ public enum Sections: CaseIterable {
             return "CITY"
         case .CURRENTWEATHER:
             return "CURRENT WEATHER"
-        case .WEATHERFORCAST:
-            return "WEATHER FORCAST"
+        case .WEATHERFORECAST:
+            return "WEATHER FORECAST"
         }
     }
     
